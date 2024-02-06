@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Page</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+        }
+        header{
+            background-color: #3498db;
+            padding: 5px;
+            color: #ffffff;
+        }
+        footer{
+            background-color: #3498db;
+            padding: 5px;
+            
+            color: #ffffff;
+        }
+        div {
+            margin-top: 50px;
+        }
+        h1 {
+            font-size: 3em;
+            color: #ffffff;
+        }
+        h3 {
+            color: #ffffff;
+        }
+        header a, footer a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+        h3 a[href="http://127.0.0.1:8000/contact"], footer a[href="http://127.0.0.1:8000/contact"] {
+            text-decoration: underline;
+        }
+       
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Phoebe's Website</h1>
+        <h3><a href="http://127.0.0.1:8000">Welcome</a> / 
+            <a href="http://127.0.0.1:8000/about">About</a> / 
+            <!--<a href="http://127.0.0.1:8000/resume">Resume</a> -->
+            <a href="http://127.0.0.1:8000/apps">Apps</a> / 
+            <a href="http://127.0.0.1:8000/projects">Projects</a> / 
+            <!--<a href="http://127.0.0.1:8000/blender">Blender</a> /-->
+            <a href="http://127.0.0.1:8000/contact">Contact</a>
+        </h3>
+    </header>
+
+</body>
+<footer>
+    <h3>
+        <a href="http://127.0.0.1:8000">Welcome</a> /
+        <a href="http://127.0.0.1:8000/about">About</a> /
+        <a href="http://127.0.0.1:8000/apps">Apps</a> /
+        <a href="http://127.0.0.1:8000/projects">Projects</a>
+    </h3>
+    <!-- Horizontal line -->
+    <div style="width: 100%; height: 2px; background-color: #ffffff; margin: 10px 0;"></div>
+    <h4>
+        <a href="https://www.linkedin.com/in/phoebe-han-061a0b195/" style="margin-right: 30px;">Visit my LinkedIn!</a>
+        <a href="https://github.com/phoebe12345">Visit my GitHub!</a>
+    </h4>
+</footer>
+
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var container = document.querySelector(".container");
+
+        function isInViewport(element) {
+            var rect = element.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
+
+        function handleScroll() {
+            if (isInViewport(container)) {
+                container.classList.add("visible");
+                window.removeEventListener("scroll", handleScroll);
+            }
+        }
+
+        window.addEventListener("scroll", handleScroll);
+        handleScroll(); // Check on page load
+    });
+</script>
+
+</body>
+</html>

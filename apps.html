@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Page</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+        }
+        header, footer {
+            background-color: #3498db;
+            padding: 5px;
+            color: #ffffff;
+        }
+        div {
+            margin-top: 50px;
+        }
+        h1 {
+            font-size: 3em;
+            color: #ffffff;
+        }
+        h3 {
+            color: #ffffff;
+        }
+        header a, footer a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+        h3 a[href="apps.html"], footer a[href="app.html"] {
+            text-decoration: underline;
+        }
+        .image {
+        display: block;
+        max-width: 100%; 
+        height: auto; 
+        margin: 20px auto; 
+        border-radius: 10px; 
+    }
+
+    .under-construction {
+        background-color: #f2f2f2; 
+        color: #333;
+        padding: 20px;
+        margin-top: 20px; 
+        font-size: 1.5em; 
+        text-align: center; 
+    }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Phoebe's Website</h1>
+        <h3><a href="index.html">Welcome</a> / 
+            <a href="about.html">About</a> / 
+            <!--<a href="http://127.0.0.1:8000/resume">Resume</a> --> 
+            <a href="apps.html">Apps</a> / 
+            <a href="projects.html">Projects</a> 
+        </h3>
+    </header>
+    <div class="under-construction">
+        <a href = "image_clickable.html"><img src="../static/images/cautionpic.png" class="image"></a>
+        Oops! Looks like I'm still working on it. Thank you for your patience.
+    </div>
+</body>
+<footer>
+    <h3>
+        <a href="index.html">Welcome</a> /
+        <a href="about.html">About</a> /
+        <a href="apps.html">Apps</a> /
+        <a href="projects.html">Projects</a>
+    </h3>
+    <!-- Horizontal line -->
+    <div style="width: 100%; height: 2px; background-color: #ffffff; margin: 10px 0;"></div>
+    <h4>
+        <a href="https://www.linkedin.com/in/phoebe-han-061a0b195/" style="margin-right: 30px;">Visit my LinkedIn!</a>
+        <a href="https://github.com/phoebe12345">Visit my GitHub!</a>
+    </h4>
+    <h5 style="font-family: 'Papyrus', fantasy;">
+        Made by Phoebe Han with ❤️
+    </h5>
+</footer>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var container = document.querySelector(".container");
+
+        function isInViewport(element) {
+            var rect = element.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
+
+        function handleScroll() {
+            if (isInViewport(container)) {
+                container.classList.add("visible");
+                window.removeEventListener("scroll", handleScroll);
+            }
+        }
+
+        window.addEventListener("scroll", handleScroll);
+        handleScroll(); // Check on page load
+    });
+</script>
+
+</body>
+</html>

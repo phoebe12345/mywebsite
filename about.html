@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Page</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header, footer {
+            background-color: #3498db;
+            padding: 5px;
+            color: #ffffff;
+        }
+        div {
+            margin-top: 50px;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            flex-wrap: wrap;
+            flex-grow: 1;
+        }
+        h1 {
+            font-size: 3em;
+            color: #ffffff;
+        }
+        h3 {
+            color: #ffffff;
+        }
+        header a, footer a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        h3 a[href="about.html"], footer a[href="about.html"] {
+            text-decoration: underline;
+        }
+
+        .container {
+            position: relative;
+            width: 80%;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .container.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .image {
+            width: 40%;
+            height: 40%;
+            border-radius: 10px;
+            margin-right: 1000px;
+            margin-top: 60px;
+            margin-bottom: 30px;
+            margin-left: 10px;
+        }
+
+        .text-container {
+            position: absolute;
+            top: 20%;
+            left: 80%;
+            transform: translate(-50%, -50%);
+            text-align: left;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.8);
+            width: 100%;
+            max-width: 600px;
+            font-size: 20px;
+        }
+
+        .bottom-image {
+            width: 40%;
+            height: auto;
+            border-radius: 10px;
+            margin-top: 30px;
+            margin-left: 700px;
+            margin-bottom: 60px;
+        }
+
+        .text-container2 {
+            position: absolute;
+            top: 70%;
+            left: 25%;
+            transform: translate(-50%, -50%);
+            text-align: left;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.8);
+            width: 100%;
+            max-width: 600px;
+            font-size: 20px;
+        }
+
+    </style>
+</head>
+<body>
+<header>
+    <h1>Phoebe's Website</h1>
+    <h3>
+        <a href="index.html">Welcome</a> /
+        <a href="about.html">About</a> /
+        <!--<a href="http://127.0.0.1:8000/resume">Resume</a> -->
+        <a href="apps.html">Apps</a> /
+        <a href="projects.html">Projects</a> 
+        <!--<a href="http://127.0.0.1:8000/blender">Blender</a> /-->
+    </h3>
+</header>
+
+<div class="container">
+    <a href="image_clickable2.html">
+        <img src="../static/images/aboutimg.png" class="image">
+    </a>
+
+    <div class="text-container">
+        <p class="text"> I am currently a student at Simon Fraser University pursuing a Bachelor's degree in
+            Computer Science with a minor in Mathematics. After graduation, my goal is to to invent time travel and possibly 
+            the ability to teleport. However, since that goal is improbable, I hope to
+            enroll in the Professional Development Program (PDP)
+            in hopes of being a secondary school teacher.  </p>
+    </div>
+    <a href="tennis.html">
+        <img src="../static/images/tennis.png" class="bottom-image">
+    </a>
+
+    <div class="text-container2">
+        
+        <p class="text"> I have a diverse range of hobbies and interests that keep me engaged outside of academics. 
+            From playing racket sports and baking to exploring my creative side through arts and crafts, 
+            my leisure time is filled with enjoyable pursuits. Moreover, I highly value spending quality moments with my friends. 
+            In parallel, I am actively working on enhancing my technical skills in hopes of further expanding my knowledge.
+         </p>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer>
+    <h3>
+        <a href="index.html">Welcome</a> /
+        <a href="about.html">About</a> /
+        <a href="apps.html">Apps</a> /
+        <a href="projects.html">Projects</a>
+    </h3>
+    <!-- Horizontal line -->
+    <div style="width: 100%; height: 2px; background-color: #ffffff; margin: 10px 0;"></div>
+    <h4>
+        <a href="https://www.linkedin.com/in/phoebe-han-061a0b195/" style="margin-right: 30px;">Visit my LinkedIn! /</a>
+        <a href="https://github.com/phoebe12345">Visit my GitHub!</a>
+    </h4>
+    <h5 style="font-family: 'Papyrus', fantasy;">
+        Made by Phoebe Han with ❤️
+    </h5>
+</footer>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var container = document.querySelector(".container");
+
+        function isInViewport(element) {
+            var rect = element.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
+
+        function handleScroll() {
+            if (isInViewport(container)) {
+                container.classList.add("visible");
+                window.removeEventListener("scroll", handleScroll);
+            }
+        }
+
+        window.addEventListener("scroll", handleScroll);
+        handleScroll(); // Check on page load
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Page</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Set the minimum height of the body to 100% of the viewport height */
+        }
+        header, footer {
+            background-color: #3498db;
+            padding: 5px;
+            color: #ffffff;
+            
+        }
+        div {
+            margin-top: 50px;
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            flex-grow: 1; 
+        }
+        h1 {
+            font-size: 3em;
+            color: #ffffff;
+        }
+        h3 {
+            color: #ffffff;
+        }
+        header a, footer a {
+            color: #ffffff;
+            text-decoration: none;
+            
+        }
+        
+        h3 a[href="http://127.0.0.1:8000"], footer a[href="http://127.0.0.1:8000"] {
+            text-decoration: underline;
+        }
+
+        .image {
+            width: 400px;
+            height: auto;
+            margin-right: 30px; 
+            margin-left: 60px;
+            margin-top: 25px;
+            border-radius: 10px;
+            margin-bottom: 60px;
+        }
+
+        .text-container {
+            flex: 1; 
+            text-align: left;
+        }
+
+        .text {
+            font-family: 'Arial', sans-serif;
+            color: #000000;
+            font-size: 24px;
+            margin-bottom: 20px;
+            margin-left: 245px;
+            margin-right: 10px;
+        }
+
+        .small-text {
+            font-family: 'Arial', sans-serif;
+            color: #000000;
+            font-size: 18px;
+            margin-bottom: 10px;
+            margin-right: 30px;
+            margin-left: 30px;
+        }
+
+        .resume-button {
+            font-family: 'Arial', sans-serif;
+            font-size: 18px;
+            background-color: #3498db;
+            color: #ffffff;
+            padding: 20px 40px;
+            text-decoration: none;
+            display: inline-block;
+            margin: 0 auto; 
+            margin-top: 40px;
+            border-radius: 10px;
+            transition: transform 0.2s ease-in-out;
+        }
+        .resume-button:hover {
+            transform: scale(1.1);
+        }
+        
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Phoebe's Website</h1>
+        <h3>
+            <a href="index.html"><u>Welcome</u></a> / 
+            <a href="about.html">About</a> / 
+            <!--<a href="http://127.0.0.1:8000/resume">Resume</a> -->
+            <a href="mystery_button.html">Apps</a> / 
+            <a href="projects.html">Projects</a> 
+            <!--<a href="http://127.0.0.1:8000/blender">Blender</a> /-->
+        </h3>
+    </header>
+
+    <div>
+        <a href = "image_clickable.html"><img src="{{ url_for('views.uploaded_file', filename='img.png') }}" class="image"></a>
+
+        <div class="text-container">
+            <p class="text">Hello! Welcome to my corner of the internet! </p>
+            <p class="small-text">Greetings! I'm Phoebe, and I am currently navigating my Computer Science degree at 
+                <a href="https://en.wikipedia.org/wiki/Simon_Fraser_University" target="_blank">Simon Fraser University</a>.
+                This website is a digital timeline for my past, ongoing, and future projects;
+                it is an opportunity for me to learn and grow with each passing project I make.
+                My hope is to create projects that not only reflect my growth but also contribute to helping others. Thanks for visiting!
+                I hope you have a great time here :)</p>
+
+            <a href="http://127.0.0.1:8000/mystery_button" class="resume-button">Mystery Button</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <h3>
+            <a href="http://127.0.0.1:8000"><u>Welcome</u></a> /
+            <a href="http://127.0.0.1:8000/about">About</a> /
+            <a href="http://127.0.0.1:8000/apps">Apps</a> /
+            <a href="http://127.0.0.1:8000/projects">Projects</a>
+        </h3>
+        <!-- Horizontal line -->
+        <div style="width: 100%; height: 2px; background-color: #ffffff; margin: 10px 0;"></div>
+        <h4>
+            <a href="https://www.linkedin.com/in/phoebe-han-061a0b195/" style="margin-right: 30px;">Visit my LinkedIn!</a>
+            <a href="https://github.com/phoebe12345">Visit my GitHub!</a>
+        </h4>
+        <h5 style="font-family: 'Papyrus', fantasy;">
+            Made by Phoebe Han with ❤️
+        </h5>
+        
+    </footer>
+    
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var container = document.querySelector(".container");
+    
+            function isInViewport(element) {
+                var rect = element.getBoundingClientRect();
+                return (
+                    rect.top >= 0 &&
+                    rect.left >= 0 &&
+                    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+                );
+            }
+    
+            function handleScroll() {
+                if (isInViewport(container)) {
+                    container.classList.add("visible");
+                    window.removeEventListener("scroll", handleScroll);
+                }
+            }
+    
+            window.addEventListener("scroll", handleScroll);
+            handleScroll(); // Check on page load
+        });
+    </script>
+    
+    </body>
+    </html>
